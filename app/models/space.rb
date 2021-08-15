@@ -4,7 +4,7 @@ class Space < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many_attached :photos
 
-  SPACES = ['Office', 'Conference Room', 'Kitchen', 'Studio', 'Hall'].freeze
+  SPACES = ['Office', 'Conference Room', 'Hall'].freeze
   validates :space, presence: true, inclusion: { in: SPACES }
   validates :title, presence: true
   validates :description, presence: true, length: { minimum: 10 }
