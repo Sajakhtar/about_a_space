@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   end
 
   resources :booking, only: [:show, :destroy]
+
+  get 'my_account', to: 'dashboard#my_account'
 end

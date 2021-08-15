@@ -20,9 +20,10 @@ class SpacesController < ApplicationController
 
   def create
     @space = Space.new(space_params)
+    @space.user = current_user
 
     if @space.save
-      redirect_to spaces_path, notice: 'Space was successfully created.'
+      redirect_to @space, notice: 'Space was successfully created.'
       # redirect to dashboard?
     else
       render :new
