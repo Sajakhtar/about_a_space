@@ -1,0 +1,10 @@
+<%= simple_form_for [ @user, @space ] do |f| %>
+  <%= f.input :space, collection: Space::SPACES %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :address %>
+  <%= f.input :price %>
+  <%= f.input :capacity %>
+  <%= f.input :wifi %>
+  <%= f.submit "Add", class: "btn btn-secondary w-100" %>
+<% end %>
