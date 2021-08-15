@@ -10,5 +10,4 @@ class Space < ApplicationRecord
   validates :address, presence: true
   validates :price, presence: true, numericality: true
   validates :capacity, presence: true, numericality: true
-  validates :wifi, presence: true
 end
