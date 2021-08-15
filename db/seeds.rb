@@ -18,13 +18,14 @@ puts "Creating Spaces..."
 
 
 users = [
-  {first_name: 'John', last_name: 'Doe', email: 'john@gmail.ocm', password: '123456'},
-  {first_name: 'Jane', last_name: 'Doe', email: 'jane@gmail.ocm', password: '123456'},
-  {first_name: 'Jon', last_name: 'Snow', email: 'jon@gmail.ocm', password: '123456'},
-  {first_name: 'Jack', last_name: 'Jones', email: 'jack@gmail.ocm', password: '123456'},
-  {first_name: 'Joe', last_name: 'Blogs', email: 'joe@gmail.ocm', password: '123456'},
-  {first_name: 'David', last_name: 'Smith', email: 'david@gmail.ocm', password: '123456'},
-  {first_name: 'Jenny', last_name: 'Smith', email: 'jenny@gmail.ocm', password: '123456'}
+  {first_name: 'John', last_name: 'Doe', email: 'john@gmail.com', password: '123456'},
+  {first_name: 'Jane', last_name: 'Doe', email: 'jane@gmail.com', password: '123456'},
+  {first_name: 'Jon', last_name: 'Snow', email: 'jon@gmail.com', password: '123456'},
+  {first_name: 'Jack', last_name: 'Jones', email: 'jack@gmail.com', password: '123456'},
+  {first_name: 'Joe', last_name: 'Blogs', email: 'joe@gmail.com', password: '123456'},
+  {first_name: 'David', last_name: 'Smith', email: 'david@gmail.com', password: '123456'},
+  {first_name: 'Jenny', last_name: 'Smith', email: 'jenny@gmail.com', password: '123456'},
+  {first_name: 'Jamey', last_name: 'Johnson', email: 'jamey@gmail.com', password: '123456'}
 ]
 
 
@@ -41,47 +42,68 @@ addresses = [
   'Marina Plaza, Dubai Marina, Dubai'
 ]
 
+titles = {
+  'Office' => ['Office with sea views', 'Office overlooking the Dubai Marina', 'Office with Burj views', 'Downtown Modern Office', 'Modern Office in central location', 'Office Space in Central Dubai'],
+  'Conference Room' => ['Conference Room with sea views', 'Conference Room overlooking the Dubai Marina', 'Conference Room with Burj views', 'Downtown Modern Conference Room', 'Modern Conference Room in central location', 'Conference Room in Central Dubai'],
+  'Hall' => ['Events hall with sea views', 'Events hall overlooking the Dubai Marina', 'Events hall with Burj views', 'Downtown Modern Events hall', 'Modern Events hall in central location', 'Events hall in Central Dubai']
+}
+
 
 descriptions = {
-  'Office': 'A brightly lit office space, with large desks and egonomic chairs. Each work station has power sockets and USB charging port. A pantry with a dining and free tea and coffee is avaible for all guests',
-  'Conference Room': 'A spacious and brighly lit conference room that can be used for board meatings, team meetings workshops and a collaborative environment. Ameneties include a conference calling suite, multiple power sockets, white boards and marker pens',
-  'Hall': 'A spacious hall available for events, functions, conferences, weddings, parties. The hall has flexible a layouts to suit any kind of event. Tables and chairs available from a self-service storage room.'
+  'Office' => 'A brightly lit office space, with large desks and egonomic chairs. Each work station has power sockets and USB charging port. A pantry with a dining and free tea and coffee is avaible for all guests',
+  'Conference Room' => 'A spacious and brighly lit conference room that can be used for board meatings, team meetings workshops and a collaborative environment. Ameneties include a conference calling suite, multiple power sockets, white boards and marker pens',
+  'Hall' => 'A spacious hall available for events, functions, conferences, weddings, parties. The hall has flexible a layouts to suit any kind of event. Tables and chairs available from a self-service storage room.'
 }
 
-
-spaces = ['Office', 'Conference Room', 'Hall']
-
-# Create 3 spaces per user
-
-path = ''
-extentsion = '.jpeg'
-space = {
-  space: 'Light & Spacious Garden Flat London',
-  title: '10 Clifton Gardens London W9 1DT',
-  description: 'A lovely summer feel for this spacious garden flat. Two double bedrooms, open plan living area, large kitchen and a beautiful conservatory',
-  address: 75,
-  price: 3,
-  capacity: '',
-  wifi: '',
-  photos: ''
+capacities = {
+  'Office' => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  'Conference Room' => [4, 6, 8, 10, 12, 14, 16, 18, 20],
+  'Hall' => [50, 100, 150, 200, 250, 300, 400, 500, 750, 1000, 2000]
 }
 
-offices = ['/office', '/office2', '/office3']
-conference_room = ['/conference_room', '/conference_room2', '/conference_room3']
-halls = ['/hall','/hall2','/hall3']
+prices = {
+  'Office' => [200, 225, 250, 275, 300, 325, 350, 400, 425, 500, 525],
+  'Conference Room' => [200, 225, 250, 275, 300, 325, 350, 400, 425, 500, 525],
+  'Hall' => [500, 750, 1000, 2000, 2500, 3000, 4000]
+}
 
-# Iterate through 4 Users
-  # create a user
-  # 3.times do Create 3 spaces per user
-  # create Space
-    # sample from addresses
-    # take relevant space images
+wifi = [true, false]
+
+photos = {
+  'Office' => ['office4', 'office5', 'office6'],
+  'Conference Room' => ['conference_room4', 'conference_room5', 'conference_room6'],
+  'Hall' => ['hall4', 'hall5', 'hall6']
+}
+path = '/Users/sajakhta/Downloads/photos/'
+extension = '.jpeg'
+
+space_types = ['Office', 'Conference Room', 'Hall']
 
 
 
 users.each do |attributes|
   user = User.create!(attributes)
   puts "Created #{user.email}"
+  space_types.each do |space_type|
+    attributes = {
+      space: space_type,
+      title: titles[space_type].sample,
+      description: descriptions[space_type],
+      address: addresses.sample,
+      price: prices[space_type].sample,
+      capacity: capacities[space_type].sample,
+      wifi: wifi.sample,
+      user: user
+    }
+    space = Space.create!(attributes)
+
+    photos[space_type].each do |photo|
+      space.photos.attach(io: File.open("#{path}#{photo}#{extension}"), filename: "#{photo}#{extension}", content_type: 'image/jpeg')
+    end
+    # attach one photo at a time or via array?
+
+    puts space.title
+  end
 end
 
 puts "Finished!"
