@@ -29,7 +29,6 @@ users = [
   # {first_name: 'Jamey', last_name: 'Johnson', email: 'jamey@gmail.com', password: '123456'}
 ]
 
-
 addresses = [
   'Manazel Al Safa Tower, Sheikh Zayed Road, Dubai, UAE',
   'Indigo Icon Tower, Cluster F, Jumeirah Lakes Towers, Dubai',
@@ -48,7 +47,6 @@ titles = {
   'Conference Room' => ['Conference Room with sea views', 'Conference Room overlooking the Dubai Marina', 'Conference Room with Burj views', 'Downtown Modern Conference Room', 'Modern Conference Room in central location', 'Conference Room in Central Dubai'],
   'Hall' => ['Events hall with sea views', 'Events hall overlooking the Dubai Marina', 'Events hall with Burj views', 'Downtown Modern Events hall', 'Modern Events hall in central location', 'Events hall in Central Dubai']
 }
-
 
 descriptions = {
   'Office' => 'A brightly lit office space, with large desks and egonomic chairs. Each work station has power sockets and USB charging port. A pantry with a dining and free tea and coffee is avaible for all guests',
@@ -96,10 +94,7 @@ photos_urls = {
   ]
 }
 
-
 space_types = ['Office', 'Conference Room', 'Hall']
-
-
 
 users.each do |attributes|
   user = User.create!(attributes)
@@ -127,8 +122,6 @@ users.each do |attributes|
       file = URI.open(url)
       space.photos.attach(io: file, filename: "#{space_type}#{index}.jpeg", content_type: 'image/jpeg')
     end
-
-
 
     puts space.title
   end
