@@ -1,2 +1,118 @@
-<h1>Dashboard#my_account</h1>
-<p>Find me in app/views/dashboard/my_account.html.erb</p>
+
+<div class="container mt-5">
+  <div class="d-flex justify-content-between">
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">My Spaces</a>
+        <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">My Bookings</a>
+      </div>
+    </nav>
+    <%= link_to "List a space", new_space_path, class: "btn btn-secondary btn-sm align-self-center" %>
+  </div>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+      <% if current_user.spaces.size > 0  %>
+        <table class="table mt-1">
+          <thead>
+            <tr>
+              <th scope="col">Space</th>
+              <th scope="col">Title</th>
+              <th scope="col">Address</th>
+              <th scope="col">Description</th>
+              <th scope="col">Price</th>
+              <th scope="col">Capacity</th>
+              <th scope="col">Wifi</th>
+              <th scope="col" colspan="3"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% current_user.spaces.each do |space| %>
+              <tr>
+                <td><%= space.space %></td>
+                <td><%= space.title %></td>
+                <td><%= space.address %></td>
+                <td><%= space.description %></td>
+                <td>AED <%= space.price %></td>
+                <td><%= space.capacity %></td>
+                <td>
+                  <% if space.wifi %>
+                    <i class="fas fa-wifi"></i>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to space do %>
+                    <i class="far fa-eye"></i>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to edit_space_path(space) do %>
+                    <i class="fas fa-pencil-alt"></i>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to space, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                    <i class="far fa-trash-alt"></i>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+          <p class="mt-5 py-5 bg-light text-warning text-center">You have not currently listed any spaces.</p>
+      <% end %>
+    </div>
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+      <% if current_user.bookings.size > 0 %>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Space</th>
+              <th scope="col">Title</th>
+              <th scope="col">Address</th>
+              <th scope="col">Capacity</th>
+              <th scope="col">Date From</th>
+              <th scope="col">Date To</th>
+              <th scope="col">Total Price</th>
+              <th scope="col" colspan="3"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% current_user.bookings.each do |booking| %>
+              <tr>
+                <td><%= booking.space.space %></td>
+                <td><%= booking.space.title %></td>
+                <td><%= booking.space.address %></td>
+                <td><%= booking.space.capacity %></td>
+                <td><%= booking.date_from %></td>
+                <td><%= booking.date_to %></td>
+                <td>AED <%= booking.total_price %></td>
+                <td>
+                  <% if space.wifi %>
+                    <i class="fas fa-wifi"></i>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to booking.space do %>
+                    <i class="far fa-eye"></i>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to space, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                    Cancel booking
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+      <% else %>
+          <p class="mt-5 py-5 text-warning text-center">You have not yet made any bookings.</p>
+      <% end %>
+    </div>
+  </div>
+</div>
