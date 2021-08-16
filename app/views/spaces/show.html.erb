@@ -1,43 +1,144 @@
-
-<h2>
-  <%= @space.title %>
-</h2>
-
-<% @space.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 100, width: 150, crop: :fill %>
-<% end %>
-
-<h3>
-  <%= @space.space %>
-</h3>
+<div class="space-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @space.photos[0].key, height: 300, crop: :fill %>')">
+  <div class="container">
+    <h1><%= @space.title.capitalize %></h1>
+    <button type="button" class="btn btn-light text-secondary" data-toggle="modal" data-target="#exampleModal">
+      Photos
+    </button>
+  </div>
+</div>
 
 
-<p>
-  <%= @space.address %>
-</p>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content bg-transparent">
 
-<p>
-  <%= @space.description %>
-</p>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <%= cl_image_tag @space.photos[0].key, crop: :fill, class: "d-block w-100" %>
+            </div>
+            <div class="carousel-item">
+              <%= cl_image_tag @space.photos[1].key, crop: :fill, class: "d-block w-100" %>
+            </div>
+            <div class="carousel-item">
+              <%= cl_image_tag @space.photos[2].key, crop: :fill, class: "d-block w-100" %>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
 
-<p>
-  <%= @space.price %>
-</p>
+    </div>
+  </div>
+</div>
 
-<p>
-  <%= @space.capacity %>
-</p>
 
-<p>
-  <%= @space.wifi %>
-</p>
+<div class="container my-5">
 
-<%= link_to edit_space_path(@space) do %>
-  <i class="fas fa-pencil-alt"></i>
-<% end %>
+  <div class="row my-3 align-items-center">
+    <div class="col-sm-12 col-md-8">
+      <h3 class="m-0"><%= @space.title.capitalize %></h3>
+      <p><%= @space.address %></p>
+      <p class="m-0"><%= @space.description %></p>
+      <ul class="d-flex justify-content-between p-0 m-0 mt-4">
+        <li class="list-unstyled">
+          <i class="fas fa-user-friends"></i>
+          <%= @space.capacity %>
+          <% if @space.wifi %>
+            <i class="fas fa-wifi"></i>
+          <% end %>
+        </li>
+        <li class="list-unstyled">
+          <h5>
+            AED
+            <%= @space.price.to_i %>
+            per day
+          </h5>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <div class="p-4 bg-white shadow-sm">
+        <h4>Booking Form Placeholder</h4>
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Date from</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Date to</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+          </div>
+          <button type="submit" class="btn btn-secondary w-100">Book now</button>
+        </form>
+      </div>
+    </div>
+  </div>
 
-<%= link_to space_path(@space), method: :delete, data: { confirm: "Are you sure ?" } do %>
-  <i class="far fa-trash-alt"></i>
-<% end %>
+  <div class="row my-3 align-items-center">
+    <div class="col-sm-12 col-md-8 mb-3">
+      <img id="map-spaces-show" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1Ijoic2FqYWtodGEiLCJhIjoiY2tyb241cmIwMG9xejJ2bzkzMjVzeDg0MSJ9.2oQtauVtwYFpEq0Hzf8dVg'>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <div class="p-4 bg-white shadow-sm">
+        <h4>Review Form Placeholder</h4>
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Comment</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Rating</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+          </div>
+          <button type="submit" class="btn btn-secondary w-100">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
 
-<%= link_to "back to spaces", spaces_path %>
+  <div class="row my-3 align-items-center">
+    <div class="col-sm-12 col-md-8">
+      <h3 class="m-0">Reviews</h3>
+
+      <ul class="list-group mt-2" data-aos="fade-up" data-aos-duration="1000" data-aos-easing="ease-in-out">
+        <% @space.reviews.each do |review| %>
+          <li class="list-group-item bg-transparent border-top-0 border-left-0 border-right-0">
+            <div>
+              <% review.rating.times do %>
+                <i class="fas fa-star text-warning"></i>
+              <% end %>
+              <small class="text-muted"><em>- <%= time_ago_in_words(review.created_at) %></em></small>
+            </div>
+            <div>
+              <%= review.comment %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+
+    </div>
+  </div>
+
+  <%= link_to edit_space_path(@space) do %>
+    <i class="fas fa-pencil-alt"></i>
+  <% end %>
+
+  <%= link_to space_path(@space), method: :delete, data: { confirm: "Are you sure ?" } do %>
+    <i class="far fa-trash-alt"></i>
+  <% end %>
+
+  <%= link_to "back to spaces", spaces_path %>
+
+</div>
