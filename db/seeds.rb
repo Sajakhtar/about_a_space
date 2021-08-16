@@ -19,14 +19,14 @@ puts "Creating Spaces..."
 
 
 users = [
-  {first_name: 'John', last_name: 'Doe', email: 'john@gmail.com', password: '123456'},
-  {first_name: 'Jane', last_name: 'Doe', email: 'jane@gmail.com', password: '123456'},
-  {first_name: 'Jon', last_name: 'Snow', email: 'jon@gmail.com', password: '123456'},
-  {first_name: 'Jack', last_name: 'Jones', email: 'jack@gmail.com', password: '123456'},
-  {first_name: 'Joe', last_name: 'Blogs', email: 'joe@gmail.com', password: '123456'},
-  {first_name: 'David', last_name: 'Smith', email: 'david@gmail.com', password: '123456'},
-  {first_name: 'Jenny', last_name: 'Smith', email: 'jenny@gmail.com', password: '123456'},
-  {first_name: 'Jamey', last_name: 'Johnson', email: 'jamey@gmail.com', password: '123456'}
+  { first_name: 'John', last_name: 'Doe', email: 'john@gmail.com', password: '123456' },
+  { first_name: 'Jane', last_name: 'Doe', email: 'jane@gmail.com', password: '123456' },
+  { first_name: 'Jon', last_name: 'Snow', email: 'jon@gmail.com', password: '123456' },
+  { first_name: 'Jack', last_name: 'Jones', email: 'jack@gmail.com', password: '123456' }
+  # {first_name: 'Joe', last_name: 'Blogs', email: 'joe@gmail.com', password: '123456'},
+  # {first_name: 'David', last_name: 'Smith', email: 'david@gmail.com', password: '123456'},
+  # {first_name: 'Jenny', last_name: 'Smith', email: 'jenny@gmail.com', password: '123456'},
+  # {first_name: 'Jamey', last_name: 'Johnson', email: 'jamey@gmail.com', password: '123456'}
 ]
 
 
@@ -70,13 +70,13 @@ prices = {
 
 wifi = [true, false]
 
-photos = {
-  'Office' => ['office4', 'office5', 'office6'],
-  'Conference Room' => ['conference_room4', 'conference_room5', 'conference_room6'],
-  'Hall' => ['hall4', 'hall5', 'hall6']
-}
-path = '/Users/sajakhta/Downloads/photos/'
-extension = '.jpeg'
+# photos = {
+#   'Office' => ['office4', 'office5', 'office6'],
+#   'Conference Room' => ['conference_room4', 'conference_room5', 'conference_room6'],
+#   'Hall' => ['hall4', 'hall5', 'hall6']
+# }
+# path = '/Users/sajakhta/Downloads/photos/'
+# extension = '.jpeg'
 
 photos_urls = {
   'Office' => [
@@ -122,7 +122,7 @@ users.each do |attributes|
     #   space.photos.attach(io: File.open("#{path}#{photo}#{extension}"), filename: "#{photo}#{extension}", content_type: 'image/jpeg')
     # end
 
-    # attach URL photo files
+    # attach URL photo files - URL best approach for running seed in heroku
     photos_urls[space_type].each_with_index do |url, index|
       file = URI.open(url)
       space.photos.attach(io: file, filename: "#{space_type}#{index}.jpeg", content_type: 'image/jpeg')
