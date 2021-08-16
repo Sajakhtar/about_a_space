@@ -1,4 +1,47 @@
-<h1>About a space</h1>
-<h3>Offices | Conference Rooms | Halls</h3>
 
-<%= link_to "See spaces", spaces_path %>
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1579525612525-053cd3e8cbd7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80);">
+  <div class="container">
+    <h1>About a Space</h1>
+      <p>Offices | Conference Rooms | Halls</p>
+      <%= link_to "Checkout spaces", spaces_path, class: "btn btn-flat" %>
+     </div>
+</div>
+
+<div class="container">
+
+<div class="cards-home mt-4">
+      <% @spaces.each do |space| %>
+      <%# card component %>
+        <div class="card mb-3 shadow-sm">
+          <%= cl_image_tag space.photos[0].key, crop: :fill %>
+          <div class="card-body d-flex flex-column justify-content-between">
+            <div class>
+              <small><%= space.space %></small>
+              <%= link_to space_path(space) do %>
+                <h5 class="card-title">
+                  <%= space.title %>
+                </h5>
+              <% end %>
+              <small><%= space.address %></small>
+            </div>
+
+            <ul class="d-flex justify-content-between p-0 m-0 mt-4">
+              <li class="list-unstyled">
+                <i class="fas fa-user-friends"></i>
+                <%= space.capacity %>
+                  <i class="fas fa-wifi"></i>
+              </li>
+              <li class="list-unstyled">
+                <h5>
+                  AED
+                  <%= space.price.to_i %>
+                </h5>
+              </li>
+            </ul>
+          </div>
+          <%# end card component %>
+        </div>
+      <% end %>
+</div>
+</div>
