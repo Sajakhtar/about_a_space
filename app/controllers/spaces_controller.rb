@@ -45,7 +45,7 @@ class SpacesController < ApplicationController
 
   def destroy
     @space.destroy
-    redirect_to root_path, notice: 'Space was successfully destroyed.'
+    redirect_to spaces_path, notice: 'Space was successfully destroyed.'
     # redirect to dashboard?
   end
 
