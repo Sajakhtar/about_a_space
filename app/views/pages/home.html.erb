@@ -1,28 +1,19 @@
 
-<div class="home-banner">
-  <h1>About a Space</h1>
-  <h3>Offices | Conference Rooms | Halls</h3>
-<%= link_to "See spaces", spaces_path %>
-</div>
 
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1579525612525-053cd3e8cbd7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80);">
+  <div class="container">
+    <h1>About a Space</h1>
+      <p>Offices | Conference Rooms | Halls</p>
+      <%= link_to "Checkout spaces", spaces_path, class: "btn btn-flat" %>
+     </div>
+</div>
 
 <div class="container">
-  <div class="row justify-content-center">
-    <div class="col-6">
-      <%= "Latest Spaces" %>
-      <p>
-        <span id="banner-typed-text">What Space?</span>
-      </p>
-    </div>
-  </div>
-</div>
 
-<div class="container mt-4 mx-auto">
-  <div class="main-container">
-    <div class="cards mr-4">
+<div class="cards-home mt-4">
       <% @spaces.each do |space| %>
       <%# card component %>
-        <div class="card mb-3 shadow-sm" style="width: 16rem;">
+        <div class="card mb-3 shadow-sm">
           <%= cl_image_tag space.photos[0].key, crop: :fill %>
           <div class="card-body d-flex flex-column justify-content-between">
             <div class>
@@ -52,6 +43,5 @@
           <%# end card component %>
         </div>
       <% end %>
-    </div>
-  </div>
+</div>
 </div>
