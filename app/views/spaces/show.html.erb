@@ -131,12 +131,16 @@
     </div>
   </div>
 
-  <%= link_to edit_space_path(@space) do %>
-    <i class="fas fa-pencil-alt"></i>
+  <% if policy(@space).edit? %>
+    <%= link_to edit_space_path(@space) do %>
+      <i class="fas fa-pencil-alt"></i>
+    <% end %>
   <% end %>
 
-  <%= link_to space_path(@space), method: :delete, data: { confirm: "Are you sure ?" } do %>
-    <i class="far fa-trash-alt"></i>
+  <% if policy(@space).destroy? %>
+    <%= link_to space_path(@space), method: :delete, data: { confirm: "Are you sure ?" } do %>
+      <i class="far fa-trash-alt"></i>
+    <% end %>
   <% end %>
 
   <%= link_to "back to spaces", spaces_path %>
