@@ -5,7 +5,7 @@
     <h1>About a Space</h1>
       <p>Offices | Conference Rooms | Halls</p>
       <%= link_to "Checkout spaces", spaces_path, class: "btn btn-flat" %>
-     </div>
+  </div>
 </div>
 
 <div class="container">
@@ -30,18 +30,21 @@
               <li class="list-unstyled">
                 <i class="fas fa-user-friends"></i>
                 <%= space.capacity %>
+                <% if space.wifi %>
                   <i class="fas fa-wifi"></i>
+                <% end %>
               </li>
               <li class="list-unstyled">
                 <h5>
                   AED
                   <%= space.price.to_i %>
+                  per day
                 </h5>
               </li>
             </ul>
           </div>
-          <%# end card component %>
         </div>
+      <%# end card component %>
       <% end %>
 </div>
 </div>
