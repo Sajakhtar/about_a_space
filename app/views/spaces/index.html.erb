@@ -1,9 +1,9 @@
-<div class="container mt-4 mx-auto">
+<%# <div class="container mt-4 mx-auto"> %>
   <div class="main-container">
-    <div class="cards mr-4">
+    <div class="cards px-3">
       <% @spaces.each do |space| %>
       <%# card component %>
-        <div class="card mb-3 shadow-sm" style="width: 16rem;">
+        <div class="card mb-3 shadow-sm">
           <%= cl_image_tag space.photos[0].key, crop: :fill %>
           <div class="card-body d-flex flex-column justify-content-between">
             <div class>
@@ -20,12 +20,15 @@
               <li class="list-unstyled">
                 <i class="fas fa-user-friends"></i>
                 <%= space.capacity %>
+                <% if space.wifi %>
                   <i class="fas fa-wifi"></i>
+                <% end %>
               </li>
               <li class="list-unstyled">
                 <h5>
                   AED
                   <%= space.price.to_i %>
+                  per day
                 </h5>
               </li>
             </ul>
@@ -36,4 +39,4 @@
     </div>
     <img id="map" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1Ijoic2FqYWtodGEiLCJhIjoiY2tyb241cmIwMG9xejJ2bzkzMjVzeDg0MSJ9.2oQtauVtwYFpEq0Hzf8dVg'>
   </div>
-</div>
+<%# </div> %>
