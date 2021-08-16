@@ -124,7 +124,7 @@ users.each do |attributes|
 
     # attach URL photo files
     photos_urls[space_type].each_with_index do |url, index|
-      file = URI.open(photo)
+      file = URI.open(url)
       space.photos.attach(io: file, filename: "#{space_type}#{index}.jpeg", content_type: 'image/jpeg')
     end
 

@@ -5,6 +5,9 @@
     <% @spaces.each do |space| %>
       <li>
         <%= space.title %>
+        <% space.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, height: 100, width: 150, crop: :fill %>
+        <% end %>
       </li>
     <% end %>
 </ul>
