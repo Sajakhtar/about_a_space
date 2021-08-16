@@ -1,0 +1,45 @@
+#map {
+  height: 91vh;
+  position: sticky;
+  top: 0;
+}
+
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  flex-grow: 1;
+}
+
+
+.main-container {
+  display: flex;
+  position: relative;
+}
+
+
+@media(max-width: 960px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .main-container {
+    flex-direction: column;
+  }
+
+  #map {
+    display: none;
+  }
+
+}
+
+@media(max-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  #map {
+    display: none;
+  }
+}
