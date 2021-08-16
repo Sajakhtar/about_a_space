@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
+require "open-uri"
 
 puts "Cleaning database..."
 User.destroy_all
@@ -77,6 +78,25 @@ photos = {
 path = '/Users/sajakhta/Downloads/photos/'
 extension = '.jpeg'
 
+photos_urls = {
+  'Office' => [
+    'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
+    'https://images.unsplash.com/photo-1604328698692-f76ea9498e76?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
+    'https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'
+  ],
+  'Conference Room' => [
+    'https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
+    'https://images.unsplash.com/photo-1582653291997-079a1c04e5a1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80',
+    'https://images.unsplash.com/photo-1503423571797-2d2bb372094a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1567&q=80'
+  ],
+  'Hall' => [
+    'https://images.unsplash.com/photo-1604081123441-90fb590beb80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3352&q=80',
+    'https://images.unsplash.com/photo-1542665952-14513db15293?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3300&q=80',
+    'https://images.unsplash.com/photo-1598242930255-c25f98ff11e5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1997&q=80'
+  ]
+}
+
+
 space_types = ['Office', 'Conference Room', 'Hall']
 
 
@@ -97,10 +117,18 @@ users.each do |attributes|
     }
     space = Space.create!(attributes)
 
-    photos[space_type].each do |photo|
-      space.photos.attach(io: File.open("#{path}#{photo}#{extension}"), filename: "#{photo}#{extension}", content_type: 'image/jpeg')
+    # attach local photo files
+    # photos[space_type].each do |photo|
+    #   space.photos.attach(io: File.open("#{path}#{photo}#{extension}"), filename: "#{photo}#{extension}", content_type: 'image/jpeg')
+    # end
+
+    # attach URL photo files
+    photos_urls[space_type].each_with_index do |url, index|
+      file = URI.open(photo)
+      space.photos.attach(io: file, filename: "#{space_type}#{index}.jpeg", content_type: 'image/jpeg')
     end
-    # attach one photo at a time or via array?
+
+
 
     puts space.title
   end
