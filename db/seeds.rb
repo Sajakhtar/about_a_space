@@ -29,18 +29,33 @@ users = [
   # {first_name: 'Jamey', last_name: 'Johnson', email: 'jamey@gmail.com', password: '123456'}
 ]
 
+# addresses = [
+#   'Manazel Al Safa Tower, Sheikh Zayed Road, Dubai',
+#   'Indigo Icon Tower, Cluster F, Jumeirah Lakes Towers, Dubai',
+#   'Building 19, Dubai Knowledge Park, King Salman Bin Abdulaziz Al Saud St, Al Sufouh, Al Sufouh 2, Dubai',
+#   'Publicis Media, Dubai Properties HQ, Al Falak St, 5th Floor, Dubai',
+#   'Address Dubai Marina, 66 Al Marsa St, Dubai Marina, Dubai',
+#   'Four Points by Sheraton Sheikh Zayed Road, Sheikh Zayed Rd, Trade CentreTrade Centre 1, Dubai',
+#   'Al Batha Tower Business Bay, 216 Sheikh Zayed Rd, Business Bay, Dubai',
+#   'Five Palm Residences, Palma Jumeirah - The Palm Jumeirah - Dubai',
+#   'GE Building 18, Dubai Media City, Dubai',
+#   'Marina Plaza, Dubai Marina, Dubai'
+# ]
+
 addresses = [
-  'Manazel Al Safa Tower, Sheikh Zayed Road, Dubai, UAE',
-  'Indigo Icon Tower, Cluster F, Jumeirah Lakes Towers, Dubai',
-  'Building 19, Dubai Knowledge Park, King Salman Bin Abdulaziz Al Saud St, Al Sufouh, Al Sufouh 2, Dubai',
-  'Publicis Media, Dubai Properties HQ, Al Falak St, 5th Floor, Dubai',
-  'Address Dubai Marina, 66 Al Marsa St, Dubai Marina, Dubai',
-  'Four Points by Sheraton Sheikh Zayed Road, Sheikh Zayed Rd, Trade CentreTrade Centre 1, Dubai',
-  'Al Batha Tower Business Bay, 216 Sheikh Zayed Rd, Business Bay, Dubai',
-  'Five Palm Residences, Palma Jumeirah - The Palm Jumeirah - Dubai',
-  'GE Building 18, Dubai Media City, Dubai',
-  'Marina Plaza, Dubai Marina, Dubai'
+  'Trade Center Dubai',
+  'Jumeirah Lakes Towers Dubai',
+  'Dubai Knowledge Park Dubai',
+  'Dubai Knowledge Village Dubai',
+  'Business Bay Dubai',
+  'Palm Jumeirah Dubai',
+  'Dubai Media City Dubai',
+  'Dubai Marina Dubai',
+  'Downtown Dubai',
+  'Deira Dubai',
+  'Al Quoz Dubai'
 ]
+
 
 titles = {
   'Office' => ['Office with sea views', 'Office overlooking the Dubai Marina', 'Office with Burj views', 'Downtown Modern Office', 'Modern Office in central location', 'Office Space in Central Dubai'],
