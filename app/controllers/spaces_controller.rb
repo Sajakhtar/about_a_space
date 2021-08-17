@@ -25,6 +25,8 @@ class SpacesController < ApplicationController
     # if current_user? AND user.spaces.select { space == @space }  then show review form
     authorize @space
 
+    @booking = Booking.new
+
     @markers = [{
       lat: @space.latitude,
       lng: @space.longitude,
