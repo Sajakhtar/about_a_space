@@ -10,7 +10,10 @@ class SpacesController < ApplicationController
     @markers = @spaces.geocoded.map do |space|
       {
         lat: space.latitude,
-        lng: space.longitude
+        lng: space.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { space: space }),
+        image_url: helpers.asset_url('buildings.svg')
+
       }
     end
 
@@ -22,7 +25,13 @@ class SpacesController < ApplicationController
     # if current_user? AND user.spaces.select { space == @space }  then show review form
     authorize @space
 
-    @markers = [{ lat: @space.latitude, lng: @space.longitude }]
+    @markers = [{
+      lat: @space.latitude,
+      lng: @space.longitude,
+      info_window: render_to_string(partial: "info_window", locals: { space: @space }),
+      image_url: helpers.asset_url('buildings.svg')
+
+   }]
   end
 
   def new
