@@ -37,6 +37,10 @@
         <%# end card component %>
       <% end %>
     </div>
-    <img id="map" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1Ijoic2FqYWtodGEiLCJhIjoiY2tyb241cmIwMG9xejJ2bzkzMjVzeDg0MSJ9.2oQtauVtwYFpEq0Hzf8dVg'>
+      <div id="map"
+      style="width: 40vw; height: 100vh; position: sticky; top: 0;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>" class="map-index">
+      </div>
   </div>
 <%# </div> %>

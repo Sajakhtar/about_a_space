@@ -21,9 +21,9 @@ ActiveStorage.start()
 // External imports
 import "bootstrap";
 
-
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import { initMapbox } from '../components/init_mapbox';
 
 // import { initUpdateNavbarOnScroll } from '../components/navbar';
 
@@ -34,4 +34,5 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   // initUpdateNavbarOnScroll();
   // loadDynamicBannerText();
+  initMapbox();
 });

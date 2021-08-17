@@ -7,6 +7,13 @@ class SpacesController < ApplicationController
     # else all spaces
     @spaces = policy_scope(Space)
 
+    @markers = @spaces.geocoded.map do |space|
+      {
+        lat: space.latitude,
+        lng: space.longitude
+      }
+    end
+
   end
 
   def show
@@ -14,6 +21,8 @@ class SpacesController < ApplicationController
     # reviews Review.all/find/where
     # if current_user? AND user.spaces.select { space == @space }  then show review form
     authorize @space
+
+    @markers = [{ lat: @space.latitude, lng: @space.longitude }]
   end
 
   def new
