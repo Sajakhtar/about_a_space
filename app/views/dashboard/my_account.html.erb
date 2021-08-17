@@ -18,7 +18,6 @@
               <th scope="col">Space</th>
               <th scope="col">Title</th>
               <th scope="col">Address</th>
-              <th scope="col">Description</th>
               <th scope="col">Price</th>
               <th scope="col">Capacity</th>
               <th scope="col">Wifi</th>
@@ -32,8 +31,7 @@
                 <td><%= space.space %></td>
                 <td><%= space.title %></td>
                 <td><%= space.address %></td>
-                <td><%= space.description %></td>
-                <td>AED <%= space.price %></td>
+                <td>AED <%= space.price.to_i %></td>
                 <td><%= space.capacity %></td>
                 <td>
                   <% if space.wifi %>
