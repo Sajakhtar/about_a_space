@@ -26,6 +26,8 @@ class SpacesController < ApplicationController
     authorize @space
 
     @booking = Booking.new
+    @review = Review.new
+    @allow_review = Booking.where(user: current_user, space: @space).empty?
 
     @markers = [{
       lat: @space.latitude,
