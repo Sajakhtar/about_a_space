@@ -16,11 +16,14 @@ class BookingsController < ApplicationController
   end
 
   def destroy
+
     @booking = Booking.find(params[:id])
 
     authorize @booking
 
     @booking.destroy
+
+
     redirect_to my_account_path, notice: 'Booking was successfully cancelled.'
   end
 
