@@ -53,7 +53,6 @@ class SpacesController < ApplicationController
     authorize @space
     if @space.save
       redirect_to @space, notice: 'Space was successfully created.'
-      # redirect to dashboard?
     else
       render :new
     end
@@ -68,7 +67,6 @@ class SpacesController < ApplicationController
 
     if @space.update(space_params)
       redirect_to @space, notice: 'Space was successfully updated.'
-      # redirect to dashboard?
     else
       render :edit
     end
@@ -78,8 +76,7 @@ class SpacesController < ApplicationController
     authorize @space
 
     @space.destroy
-    redirect_to spaces_path, notice: 'Space was successfully destroyed.'
-    # redirect to dashboard?
+    redirect_to my_account_path, notice: 'Space was successfully destroyed.'
   end
 
   private
