@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
     @review.user = current_user
     @space = Space.find(params[:space_id])
     @review.space = @space
+    @booking = Booking.new
 
     authorize @review
 
