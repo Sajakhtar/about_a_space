@@ -25,6 +25,9 @@ class SpacesController < ApplicationController
     # if current_user? AND user.spaces.select { space == @space }  then show review form
     authorize @space
 
+    @has_no_photos = @space.photos.empty?
+    @num_photos = @space.photos.size unless @has_photos
+
     @booking = Booking.new
     @review = Review.new
     @allow_review = Booking.where(user: current_user, space: @space).empty?
@@ -35,7 +38,7 @@ class SpacesController < ApplicationController
       info_window: render_to_string(partial: "info_window", locals: { space: @space }),
       image_url: helpers.asset_url('buildings.svg')
 
-   }]
+    }]
   end
 
   def new

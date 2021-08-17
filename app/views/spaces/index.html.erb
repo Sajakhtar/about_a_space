@@ -4,7 +4,11 @@
       <% @spaces.each do |space| %>
         <%# card component %>
         <div class="card mb-3 shadow-sm">
-          <%= cl_image_tag space.photos[0].key, crop: :fill %>
+          <% if space.photos.empty? %>
+            <img src="https://images.unsplash.com/photo-1505409859467-3a796fd5798e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80" class="card-img-top" alt="...">
+          <% else %>
+            <%= cl_image_tag space.photos[0].key, crop: :fill %>
+          <% end %>
           <div class="card-body d-flex flex-column justify-content-between">
             <div class>
               <small><%= space.space %></small>

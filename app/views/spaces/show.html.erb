@@ -1,13 +1,21 @@
-<div class="space-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @space.photos[0].key, height: 300, crop: :fill %>')">
-  <div class="container">
-    <h1><%= @space.title.capitalize %></h1>
-    <button type="button" class="btn btn-light text-secondary" data-toggle="modal" data-target="#exampleModal">
-      Photos
-    </button>
+<% if @has_no_photos %>
+  <div class="space-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2301&q=80')">
+    <div class="container">
+      <h1><%= @space.title.capitalize %></h1>
+    </div>
   </div>
-</div>
+<% else %>
+  <div class="space-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @space.photos[0].key, height: 300, crop: :fill %>')">
+    <div class="container">
+      <h1><%= @space.title.capitalize %></h1>
+      <button type="button" class="btn btn-light text-secondary" data-toggle="modal" data-target="#exampleModal">
+        Photos
+      </button>
+    </div>
+  </div>
+<% end %>
 
-
+<% unless @has_no_photos %>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content bg-transparent">
@@ -15,19 +23,19 @@
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <% cl_image_tag (1..@num_photos-1).each do |num| %>
+              <li data-target="#carouselExampleIndicators" data-slide-to="<%= num %>"></li>
+            <% end %>
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
               <%= cl_image_tag @space.photos[0].key, crop: :fill, class: "d-block w-100" %>
             </div>
-            <div class="carousel-item">
-              <%= cl_image_tag @space.photos[1].key, crop: :fill, class: "d-block w-100" %>
-            </div>
-            <div class="carousel-item">
-              <%= cl_image_tag @space.photos[2].key, crop: :fill, class: "d-block w-100" %>
-            </div>
+            <% @space.photos[1..@num_photos-1].each do |photo| %>
+              <div class="carousel-item">
+                <%= cl_image_tag photo.key, crop: :fill, class: "d-block w-100" %>
+              </div>
+            <% end %>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -42,7 +50,7 @@
     </div>
   </div>
 </div>
-
+<% end %>
 
 <div class="container my-5">
 
@@ -117,17 +125,4 @@
 
     </div>
   </div>
-
-  <% if policy(@space).edit? %>
-    <%= link_to edit_space_path(@space) do %>
-      <i class="fas fa-pencil-alt"></i>
-    <% end %>
-  <% end %>
-
-  <% if policy(@space).destroy? %>
-    <%= link_to space_path(@space), method: :delete, data: { confirm: "Are you sure ?" } do %>
-      <i class="far fa-trash-alt"></i>
-    <% end %>
-  <% end %>
-
 </div>
