@@ -1,19 +1,21 @@
 <%# <div class="container mt-4 mx-auto"> %>
   <div class="main-container">
     <div>
-
-      <%= form_tag spaces_path, method: :get, class: "form-inline m-3 justify-content-center" do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control w-75 rounded",
-          placeholder: "Find a space"
-        %>
-        <%# <%= submit_tag "Search", class: "btn btn-primary" %>
-        <%= button_tag(type: "submit", class: "btn btn-primary") do %>
-          <i class="fas fa-search"></i>
+      <div>
+        <%= form_tag spaces_path, method: :get, class: "form-inline m-3 justify-content-center" do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control w-75 rounded",
+            placeholder: "Find a space"
+          %>
+          <%# <%= submit_tag "Search", class: "btn btn-primary" %>
+          <%= button_tag(type: "submit", class: "btn btn-primary") do %>
+            <i class="fas fa-search"></i>
+          <% end %>
+          <%# add date filter flatpickr %>
         <% end %>
 
-      <% end %>
+      </div>
       <% if @spaces.empty? %>
         <p class="no-cards text-danger">Sorry, your search found no Spaces. Please try another search.</p>
         <div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/xTiTnwLNe6sSsySBNu" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/nowthisnews-news-obama-nowthis-xTiTnwLNe6sSsySBNu">via GIPHY</a></p>
