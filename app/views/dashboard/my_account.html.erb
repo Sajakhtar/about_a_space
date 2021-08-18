@@ -35,8 +35,8 @@
                 <td><%= booking.space.title %></td>
                 <td><%= booking.space.address %></td>
                 <td><%= booking.space.capacity %></td>
-                <td><%= booking.date_from %></td>
-                <td><%= booking.date_to %></td>
+                <td><%= booking.date_from.strftime('%a %d %b %Y') %></td>
+                <td><%= booking.date_to.strftime('%a %d %b %Y') %></td>
                 <td>AED <%= booking.total_price %></td>
                 <td>
                   <%= link_to booking.space, class: "btn btn-secondary" do %>
