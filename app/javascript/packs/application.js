@@ -25,6 +25,7 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 import { initMapbox } from '../components/init_mapbox';
 import { initAutocomplete } from '../components/init_autocomplete';
+import { initFlatpickr } from '../components/init_flatpickr';
 
 // import { initUpdateNavbarOnScroll } from '../components/navbar';
 
@@ -37,4 +38,5 @@ document.addEventListener('turbolinks:load', () => {
   // loadDynamicBannerText();
   initMapbox();
   initAutocomplete();
+  initFlatpickr();
 });

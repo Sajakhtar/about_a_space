@@ -28,9 +28,9 @@ class SpacesController < ApplicationController
     @has_bookings = !@space.bookings.empty?
 
     if @has_bookings
-      @disable = @space.bookings.map { |booking| { from: booking.date_from.to_s, to: booking.date_to.to_s } }
+      @unavailable_dates = @space.bookings.map { |booking| { from: booking.date_from.to_s, to: booking.date_to.to_s } }
     end
-    @disabled_dates = { dateFormat: "Y-m-d", disable: @disable }.to_json
+    # @disabled_dates = { dateFormat: "Y-m-d", disable: @unavailable_dates }.to_json
 
     @booking = Booking.new
     @review = Review.new
