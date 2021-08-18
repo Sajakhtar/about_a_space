@@ -6,6 +6,11 @@ class SpacesController < ApplicationController
     # if filter then @spaces.where()
     # else all spaces
     @spaces = policy_scope(Space)
+    if params[:query].present?
+      @spaces = Space.search_spaces(params[:query])
+    else
+      @spaces = Space.all
+    end
 
     @markers = @spaces.geocoded.map do |space|
       {

@@ -2,13 +2,17 @@
   <div class="main-container">
     <div>
 
-      <%= form_tag spaces_path, method: :get, class: "form-inline m-3", html: {class: "w-100 m-3"} do %>
+      <%= form_tag spaces_path, method: :get, class: "form-inline m-3 justify-content-center" do %>
         <%= text_field_tag :query,
           params[:query],
-          class: "form-control",
+          class: "form-control w-75 rounded",
           placeholder: "Find a space"
         %>
-        <%= submit_tag "Search", class: "btn btn-primary" %>
+        <%# <%= submit_tag "Search", class: "btn btn-primary" %>
+        <%= button_tag(type: "submit", class: "btn btn-primary") do %>
+          <i class="fas fa-search"></i>
+        <% end %>
+
       <% end %>
     <div class="cards px-3">
       <% @spaces.each do |space| %>
