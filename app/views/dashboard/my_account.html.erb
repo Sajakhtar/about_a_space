@@ -39,13 +39,17 @@
                 <td><%= booking.date_to.strftime('%a %d %b %Y') %></td>
                 <td>AED <%= booking.total_price %></td>
                 <td>
-                  <%= link_to booking.space, class: "btn btn-outline-secondary btn-sm" do %>
-                    Review
+                  <% if booking.date_to <= Date.today %>
+                    <%= link_to booking.space, class: "btn btn-outline-secondary btn-sm" do %>
+                      Review
+                    <% end %>
                   <% end %>
                 </td>
                 <td>
-                  <%= link_to booking_path(booking), method: :delete, class: "btn btn-outline-danger btn-sm",  data: { confirm: 'Are you sure?' } do %>
-                    Cancel
+                  <% unless booking.date_from <= Date.today %>
+                    <%= link_to booking_path(booking), method: :delete, class: "btn btn-outline-danger btn-sm",  data: { confirm: 'Are you sure?' } do %>
+                      Cancel
+                    <% end %>
                   <% end %>
                 </td>
               </tr>
