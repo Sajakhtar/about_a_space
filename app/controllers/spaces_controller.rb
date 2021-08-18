@@ -20,13 +20,17 @@ class SpacesController < ApplicationController
   end
 
   def show
-    # booking form Booking.new
-    # reviews Review.all/find/where
-    # if current_user? AND user.spaces.select { space == @space }  then show review form
     authorize @space
 
     @has_no_photos = @space.photos.empty?
     @num_photos = @space.photos.size unless @has_photos
+
+    @has_bookings = !@space.bookings.empty?
+
+    if @has_bookings
+      @disable = @space.bookings.map { |booking| { from: booking.date_from.to_s, to: booking.date_to.to_s } }
+    end
+    @disabled_dates = { dateFormat: "Y-m-d", disable: @disable }.to_json
 
     @booking = Booking.new
     @review = Review.new
