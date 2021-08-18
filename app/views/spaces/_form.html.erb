@@ -1,4 +1,4 @@
-<%= simple_form_for [ @user, @space ] do |f| %>
+<%= simple_form_for [ @user, @space ], html: { class: "min-vh-100"} do |f| %>
   <%= f.input :space, collection: Space::SPACES %>
   <%= f.input :title %>
   <%= f.input :description %>
