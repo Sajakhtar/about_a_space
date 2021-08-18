@@ -50,7 +50,7 @@ const initFlatpickr = () => {
   };
 
   const dateFilter = document.getElementById('date-filter')
-  console.log(dateFilter)
+
   if(dateFilter) {
     const filterCalendar = flatpickr(dateFilter, {
       minDate: "today",
