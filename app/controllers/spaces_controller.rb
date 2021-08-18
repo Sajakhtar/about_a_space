@@ -22,9 +22,6 @@ class SpacesController < ApplicationController
   def show
     authorize @space
 
-    @has_no_photos = @space.photos.empty?
-    @num_photos = @space.photos.size unless @has_photos
-
     @has_bookings = !@space.bookings.empty?
 
     if @has_bookings

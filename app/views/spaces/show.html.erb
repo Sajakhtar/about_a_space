@@ -1,4 +1,4 @@
-<% if @has_no_photos %>
+<% unless @space.photos.attached? %>
   <div class="space-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2301&q=80')">
     <div class="container">
       <h1><%= @space.title.capitalize %></h1>
@@ -15,24 +15,23 @@
   </div>
 <% end %>
 
-<% unless @has_no_photos %>
+<% if @space.photos.attached? %>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content bg-transparent">
 
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <% cl_image_tag (1..@num_photos-1).each do |num| %>
-              <li data-target="#carouselExampleIndicators" data-slide-to="<%= num %>"></li>
+
+            <% @space.photos.each_with_index do |photo, index| %>
+              <% active = index.zero? ? "active" : "" %>
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="<%= active %>"></li>
             <% end %>
           </ol>
           <div class="carousel-inner">
-            <div class="carousel-item active">
-              <%= cl_image_tag @space.photos[0].key, crop: :fill, class: "d-block w-100" %>
-            </div>
-            <% @space.photos[1..@num_photos-1].each do |photo| %>
-              <div class="carousel-item">
+            <% @space.photos.each_with_index do |photo, index| %>
+              <% active = index.zero? ? "active" : "" %>
+              <div class="carousel-item <%= active %>">
                 <%= cl_image_tag photo.key, crop: :fill, class: "d-block w-100" %>
               </div>
             <% end %>
