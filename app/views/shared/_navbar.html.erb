@@ -1,7 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-aboutaspace">
   <%= link_to root_path, class: "navbar-brand" do %>
-    <%# <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-    <i class="fas fa-door-open"></i>
+    <i class="fas fa-door-open text-white"></i> <small class="text-white">About a Space</small>
     <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,14 +12,14 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item active">
-          <%= link_to "List a space", new_space_path, class: "nav-link border border-secondary rounded text-center mx-1 my-1 bg-secondary text-white" %>
+          <%= link_to "List a space", new_space_path, class: "nav-link border border-white rounded text-center mx-1 my-1 bg-white text-primary" %>
         </li>
         <li class="nav-item active">
-          <%= link_to "My account", my_account_path, class: "nav-link border border-secondary rounded text-center mx-1 my-1 bg-secondary text-white" %>
+          <%= link_to "My account", my_account_path, class: "nav-link border border-white rounded text-center mx-1 my-1 bg-white text-primary" %>
         </li>
         <li class="nav-item">
 
-          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link border border-secondary rounded text-center mx-1 my-1 bg-white text-secondary" %>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link border border-white rounded text-center mx-1 my-1 bg-transparent text-white" %>
         </li>
         <%# <li class="nav-item dropdown"> %>
           <%# <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
@@ -33,10 +32,10 @@
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "Sign up", new_user_registration_path, class: "nav-link border border-secondary rounded text-center mx-1 my-1 bg-secondary text-white" %>
+          <%= link_to "Sign up", new_user_registration_path, class: "nav-link border border-white rounded text-center mx-1 my-1 bg-white text-primary" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Sign in", new_user_session_path, class: "nav-link border border-secondary rounded text-center mx-1 my-1 bg-white text-secondary" %>
+          <%= link_to "Sign in", new_user_session_path, class: "nav-link border border-white rounded text-center mx-1 my-1 bg-transparent text-white" %>
         </li>
       <% end %>
     </ul>
