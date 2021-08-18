@@ -30,7 +30,7 @@ class SpacesController < ApplicationController
     if @has_bookings
       @unavailable_dates = @space.bookings.map { |booking| { from: booking.date_from.to_s, to: booking.date_to.to_s } }
     end
-
+    # raise
     @booking = Booking.new
     @review = Review.new
     @allow_review = Booking.where(user: current_user, space: @space).empty?

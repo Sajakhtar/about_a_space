@@ -79,9 +79,15 @@
     <div class="col-sm-12 col-md-4">
       <div class="p-4 bg-white shadow-sm">
         <h4>Book this space</h4>
-        <div id="booking-dates" data-unavailable="<%= @unavailable_dates.to_json %>">
-          <%= render 'bookings/form' %>
-        </div>
+        <% if @has_bookings %>
+          <div id="booking-dates" data-unavailable="<%= @unavailable_dates.to_json %>">
+            <%= render 'bookings/form' %>
+          </div>
+        <% else %>
+          <div id="booking-dates">
+            <%= render 'bookings/form' %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
