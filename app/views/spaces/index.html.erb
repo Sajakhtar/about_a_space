@@ -1,5 +1,15 @@
 <%# <div class="container mt-4 mx-auto"> %>
   <div class="main-container">
+    <div>
+
+      <%= form_tag spaces_path, method: :get, class: "form-inline m-3", html: {class: "w-100 m-3"} do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Find a space"
+        %>
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+      <% end %>
     <div class="cards px-3">
       <% @spaces.each do |space| %>
         <%# card component %>
@@ -40,6 +50,7 @@
         </div>
         <%# end card component %>
       <% end %>
+    </div>
     </div>
       <div id="map"
       style="width: 40vw; height: 100vh; position: sticky; top: 0;"
