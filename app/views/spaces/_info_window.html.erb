@@ -1,2 +1,5 @@
+
 <p class="pb-1"><%= space.title %></p>
+<%= cl_image_tag space.photos.first.key, crop: :fill, class: "d-block w-100" %>
 <small><%= space.address %></small>
+<p>AED <%= space.price %> daily</p>
