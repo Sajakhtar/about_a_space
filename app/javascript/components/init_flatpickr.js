@@ -46,8 +46,20 @@ const initFlatpickr = () => {
       }
     });
 
+
   };
 
+  const dateFilter = document.getElementById('date-filter')
+  console.log(dateFilter)
+  if(dateFilter) {
+    const filterCalendar = flatpickr(dateFilter, {
+      minDate: "today",
+      altInput: true,
+      altFormat: "F j, Y",
+      dateFormat: "Y-m-d",
+      mode: "range"
+    });
+  }
 }
 
 export { initFlatpickr }

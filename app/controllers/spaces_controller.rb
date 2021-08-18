@@ -6,8 +6,17 @@ class SpacesController < ApplicationController
     # if filter then @spaces.where()
     # else all spaces
     @spaces = policy_scope(Space)
-    if params[:query].present?
+    if params[:query].present? && params[:date].present?
+      search_results = Space.search_spaces(params[:query])
+      dates = params[:date].split(' to ')
+      spaces_booked = Space.joins(:bookings).where(bookings: { date_from: dates[0]..dates[1] })
+      @spaces = search_results.where.not(id: spaces_booked)
+    elsif params[:query].present?
       @spaces = Space.search_spaces(params[:query])
+    elsif params[:date].present?
+      dates = params[:date].split(' to ')
+      spaces_booked = Space.joins(:bookings).where(bookings: { date_from: dates[0]..dates[1] })
+      @spaces = Space.where.not(id: spaces_booked)
     else
       @spaces = Space.all
     end
