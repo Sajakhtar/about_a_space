@@ -27,6 +27,8 @@ import { initMapbox } from '../components/init_mapbox';
 import { initAutocomplete } from '../components/init_autocomplete';
 import { initFlatpickr } from '../components/init_flatpickr';
 import { initTyped } from 'components/init_typed';
+import { initAos } from 'components/init_aos';
+
 
 // import { initUpdateNavbarOnScroll } from '../components/navbar';
 
@@ -40,5 +42,6 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initAutocomplete();
   initFlatpickr();
+  initAos();
   initTyped();
 });
