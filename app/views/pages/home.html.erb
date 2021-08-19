@@ -5,17 +5,42 @@
     <h1><i class="fas fa-door-open"></i> About a Space</h1>
       <h4 class="text-white"><span class="typed"></span></h4>
       <%# <%= link_to "Checkout spaces", spaces_path, class: "btn btn-flat" %>
-      <%= form_tag spaces_path, method: :get, class: "form-inline m-3 justify-content-center", html: {class: "w-100 m-3"} do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control w-50 rounded",
-          placeholder: "Find a space"
-        %>
-        <%# <%= submit_tag "Search", class: "btn btn-primary" %>
-        <%= button_tag(type: "submit", class: "btn btn-primary") do %>
-          <i class="fas fa-search"></i>
-        <% end %>
-      <% end %>
+
+      <%# <%= form_tag spaces_path, method: :get, class: "form-inline m-3 justify-content-center", html: {class: "w-100 m-3"} do %>
+        <%# <%= text_field_tag :query, %>
+          <%# params[:query], %>
+          <%# class: "form-control w-50 rounded", %>
+          <%# placeholder: "Find a space" %>
+        <%# %>
+        <%# <%= button_tag(type: "submit", class: "btn btn-primary") do %>
+          <%# <i class="fas fa-search"></i> %>
+        <%# <% end %>
+      <%# <% end %>
+
+      <div class="m-2 px-2 py-2">
+        <h4 class="mb-0  mt-3 text-center text-light">Find for your ideal Space</h4>
+        <div class="d-flex justify-content-center m-auto col-sm-12 col-md-8 col-lg-6">
+            <%= form_tag spaces_path, method: :get, class: "my-3 justify-content-center w-100" do %>
+              <%= text_field_tag :query,
+                params[:query],
+                class: "form-control w-100 rounded mb-1",
+                placeholder: "Search"
+              %>
+              <%= text_field_tag :date,
+                params[:date],
+                class: "form-control w-100 rounded mb-1",
+                placeholder: "Find by dates",
+                id: "date-filter"
+              %>
+              <div class="d-flex justify-content-between w-100">
+                <small class="text-light ml-1">Search by keywords and dates</small>
+                <%= button_tag(type: "submit", class: "btn btn-primary px-4") do %>
+                  <i class="fas fa-search"></i>
+                <% end %>
+              </div>
+          <% end %>
+        </div>
+      </div>
 
   </div>
 </div>

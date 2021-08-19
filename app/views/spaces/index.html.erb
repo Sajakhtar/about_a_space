@@ -1,33 +1,35 @@
 <%# <div class="container mt-4 mx-auto"> %>
   <div class="main-container">
     <div>
-      <div class="m-3 bg-white px-2 py-4 rounded">
-        <h5 class="mb-0 text-center">Search for your ideal Space</h5>
-        <div class="d-flex justify-content-center">
-            <%= form_tag spaces_path, method: :get, class: "form-inline my-3 justify-content-center w-100" do %>
-              <div class="d-flex-column position-relative">
-                <%= text_field_tag :query,
-                  params[:query],
-                  class: "form-control w-100 rounded mr-1",
-                  placeholder: "Search"
-                %>
-                <small class="text-muted text-left position-absolute bottom-n2" style="width:50vw">Search for an neighborhood, space type for a keyword.</small>
-              </div>
+      <div class="m-2 bg-light px-2 py-2 rounded shadow-sm">
+        <h4 class="mb-0  mt-3 text-center text-primary">Find for your ideal Space</h4>
+        <div class="d-flex justify-content-center m-auto col-sm-12 col-md-8 col-lg-6">
+            <%= form_tag spaces_path, method: :get, class: "my-3 justify-content-center w-100" do %>
+              <%= text_field_tag :query,
+                params[:query],
+                class: "form-control w-100 rounded mb-1",
+                placeholder: "Search"
+              %>
               <%= text_field_tag :date,
                 params[:date],
-                class: "form-control w-25 rounded mr-1",
+                class: "form-control w-100 rounded mb-1",
                 placeholder: "Find by dates",
                 id: "date-filter"
               %>
-            <%= button_tag(type: "submit", class: "btn btn-primary") do %>
-              <i class="fas fa-search"></i>
-            <% end %>
+              <div class="d-flex justify-content-between w-100">
+                <small class="text-muted ml-1">Search by keywords and dates</small>
+                <%= button_tag(type: "submit", class: "btn btn-primary px-4") do %>
+                  <i class="fas fa-search"></i>
+                <% end %>
+              </div>
           <% end %>
         </div>
       </div>
       <% if @spaces.empty? %>
         <p class="no-cards text-danger">Sorry, your search found no Spaces. Please try another search.</p>
-        <div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/xTiTnwLNe6sSsySBNu" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/nowthisnews-news-obama-nowthis-xTiTnwLNe6sSsySBNu">via GIPHY</a></p>
+        <div class="container col-sm-12 col-md-8 col-lg-6 text-center min-vh-100">
+          <iframe src="https://giphy.com/embed/ZYX2ZNBPHmlmfc7Fcj" width="480" height="240" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/cakefx-cake-fxx-fx-ZYX2ZNBPHmlmfc7Fcj">via GIPHY</a></p>
+        </div>
       <% else %>
         <div class="cards px-3" data-aos="fade-in" data-aos-duration="2000" data-aos-easing="ease-in-out">
           <% @spaces.each do |space| %>
