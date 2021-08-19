@@ -3,7 +3,11 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :date_from, as: :string, type: :text, placeholder: "Select dates" %>
+    <% if session[:dates].present? %>
+      <%= f.input :date_from, as: :string, type: :text, input_html: { value: session[:dates]} %>
+    <% else %>
+      <%= f.input :date_from, as: :string, type: :text, placeholder: "Select dates" %>
+    <% end %>
   </div>
 
   <div>

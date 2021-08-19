@@ -3,9 +3,10 @@ class SpacesController < ApplicationController
   before_action :set_space, only: [:show, :edit, :update, :destroy]
 
   def index
-    # if filter then @spaces.where()
-    # else all spaces
     @spaces = policy_scope(Space)
+
+    session[:dates] = params[:date] if params[:date].present?
+
     if params[:query].present? && params[:date].present?
       search_results = Space.search_spaces(params[:query])
       dates = params[:date].split(' to ')
@@ -30,14 +31,12 @@ class SpacesController < ApplicationController
 
       }
     end
-
   end
 
   def show
     authorize @space
 
     @has_bookings = !@space.bookings.empty?
-
     if @has_bookings
       @unavailable_dates = @space.bookings.map { |booking| { from: booking.date_from.to_s, to: booking.date_to.to_s } }
     end
