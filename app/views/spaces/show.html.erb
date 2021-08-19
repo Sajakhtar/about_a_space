@@ -111,8 +111,8 @@
   </div>
 
   <div class="row my-3 align-items-center">
-    <div class="col-sm-12 col-md-8">
-      <h3 class="m-0">Reviews</h3>
+    <div class="col-sm-12 col-md-8 border-top">
+      <h3 class="mt-3"><%= pluralize @space.reviews.size, "review" %></h3>
 
       <ul class="list-group mt-2" data-aos="fade-up" data-aos-duration="1000" data-aos-easing="ease-in-out">
         <% @space.reviews.each do |review| %>

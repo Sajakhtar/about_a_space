@@ -39,6 +39,11 @@
                 <td><%= booking.date_to.strftime('%a %d %b %Y') %></td>
                 <td>AED <%= booking.total_price %></td>
                 <td>
+                    <%= link_to booking, class: "btn btn-outline-primary btn-sm" do %>
+                      View
+                  <% end %>
+                </td>
+                <td>
                   <% if booking.date_to <= Date.today %>
                     <%= link_to booking.space, class: "btn btn-outline-secondary btn-sm" do %>
                       Review
