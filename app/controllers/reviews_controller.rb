@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
     authorize @review
 
     if @review.save
-      redirect_to @space, notice: 'Review was successfully created.'
+      redirect_to space_path(@space, anchor: "review-#{@review.id}"), notice: 'Review was successfully created.'
     else
       render 'spaces/show'
     end

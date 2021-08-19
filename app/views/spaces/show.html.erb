@@ -116,7 +116,7 @@
 
       <ul class="list-group mt-2" data-aos="fade-up" data-aos-duration="1000" data-aos-easing="ease-in-out">
         <% @space.reviews.each do |review| %>
-          <li class="list-group-item bg-transparent border-top-0 border-left-0 border-right-0">
+          <li class="list-group-item bg-transparent border-top-0 border-left-0 border-right-0" id="review-<%= review.id %>">
             <div>
               <% review.rating.times do %>
                 <i class="fas fa-star text-warning"></i>
