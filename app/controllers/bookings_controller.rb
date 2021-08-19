@@ -2,6 +2,11 @@ require 'date'
 
 class BookingsController < ApplicationController
 
+  def show
+    @booking = Booking.find(params[:id])
+    authorize @booking
+  end
+
   def create
     # params - extract to and from
     date_range = params[:booking][:date_from].split(' to ')
@@ -27,7 +32,7 @@ class BookingsController < ApplicationController
     authorize @booking
 
     if @booking.save
-      redirect_to my_account_path, notice: 'Booking was successfully created.'
+      redirect_to @booking, notice: 'Booking was successfully created.'
     else
       render 'spaces/show'
     end
