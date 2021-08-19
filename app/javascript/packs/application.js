@@ -30,6 +30,8 @@ import { initFlatpickr } from '../components/init_flatpickr';
 import { initAos } from 'components/init_aos';
 import { initTyped } from 'components/init_typed';
 import { initSweetalert } from 'components/init_sweetalert';
+import { barRating } from 'components/init_bar_rating';
+import 'jquery-bar-rating/dist/themes/css-stars.css'
 
 // import { initUpdateNavbarOnScroll } from '../components/navbar';
 
@@ -46,4 +48,5 @@ document.addEventListener('turbolinks:load', () => {
   initAos();
   initTyped();
   initSweetalert();
+  barRating();
 });
