@@ -1,13 +1,13 @@
 <% unless @booking.space.photos.attached? %>
   <div class="space-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2301&q=80')">
     <div class="container">
-      <h1>Your Booking Details</h1>
+      <h1>Your Business Details</h1>
     </div>
   </div>
 <% else %>
   <div class="space-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @booking.space.photos[0].key, height: 300, crop: :fill %>')">
     <div class="container">
-      <h1>Your Booking Details</h1>
+      <h1>Your Business Details</h1>
     </div>
   </div>
 <% end %>
@@ -17,14 +17,14 @@
   <div class="row justify-content-center">
     <div class="col-sm-8 m-auto">
       <div class="my-5 p-4 border rounded shadow-sm">
-        <h4 class="text-center mb-5">Booking for <%= @booking.user.first_name.capitalize %> <%= @booking.user.last_name.capitalize %></h4>
+        <h4 class="text-center mb-5">Investment proposal for <%= @booking.user.first_name.capitalize %> <%= @booking.user.last_name.capitalize %></h4>
         <p><strong>Account: </strong><%= @booking.user.email %></p>
-        <p><strong>Space type: </strong><%= @booking.space.space %></p>
-        <p><strong>Space: </strong><%= @booking.space.title %></p>
+        <p><strong>What you want to do: </strong><%= @booking.space.space %></p>
+        <p><strong>Your Business: </strong><%= @booking.space.title %></p>
         <p><strong>Address: </strong><%= @booking.space.address %></p>
-        <p><strong>Dates: </strong><%= @booking.date_from.strftime('%a %d %b %Y') %> to <%= @booking.date_to.strftime('%a %d %b %Y') %></p>
-        <p><strong>Total: </strong>AED <%= @booking.total_price.to_i %></p>
-        <p>If you need assistance with your booking, don't hesitate to <a href = "mailto: hello@aboutaspace.com">get in touch</a></p>
+        <%# <p><strong>Dates: </strong><%= @booking.date_from.strftime('%a %d %b %Y') to <%= @booking.date_to.strftime('%a %d %b %Y') %></p> %> %>
+        <p><strong>Total: </strong>USD <%= @booking.total_price.to_i %></p>
+        <p>If you need assistance with your investment proposal, don't hesitate to <a href = "mailto: onome@unicorncube.com">get in touch</a></p>
 
         <div class="text-center my-5">
           <%= link_to "Go to my account", my_account_path, class: "btn btn-primary" %>

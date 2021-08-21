@@ -12,8 +12,8 @@ const initSweetalert = () => {
     }
 
     const options = {
-      title: "Booking Confirmation!",
-      text: `Your space has been booked.\nHave a great stay.`,
+      title: "Setup Confirmation!",
+      text: `Your new venture has been setup.\nWish you the very best...keep building.`,
       icon: "success",
     }
 

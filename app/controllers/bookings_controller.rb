@@ -32,7 +32,7 @@ class BookingsController < ApplicationController
     authorize @booking
 
     if @booking.save
-      redirect_to @booking, notice: 'Booking was successfully created.'
+      redirect_to @booking, notice: 'Funding proposal was successfully created.'
     else
       render 'spaces/show'
     end
@@ -47,7 +47,7 @@ class BookingsController < ApplicationController
     @booking.destroy
 
 
-    redirect_to my_account_path, notice: 'Booking was successfully cancelled.'
+    redirect_to my_account_path, notice: 'Funding proposal was successfully cancelled.'
   end
 
   private

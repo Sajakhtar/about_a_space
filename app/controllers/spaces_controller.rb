@@ -65,7 +65,7 @@ class SpacesController < ApplicationController
 
     authorize @space
     if @space.save
-      redirect_to @space, notice: 'Space was successfully created.'
+      redirect_to @space, notice: 'Your New Venture was successfully created.'
     else
       render :new
     end
@@ -79,7 +79,7 @@ class SpacesController < ApplicationController
     authorize @space
 
     if @space.update(space_params)
-      redirect_to @space, notice: 'Space was successfully updated.'
+      redirect_to @space, notice: 'Your New Venture was successfully updated.'
     else
       render :edit
     end
@@ -89,7 +89,7 @@ class SpacesController < ApplicationController
     authorize @space
 
     @space.destroy
-    redirect_to my_account_path, notice: 'Space was successfully destroyed.'
+    redirect_to my_account_path, notice: 'Your New Venture was successfully deleted.'
   end
 
   private
