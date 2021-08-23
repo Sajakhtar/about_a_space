@@ -6,7 +6,7 @@ const initTyped = () => {
 
   if(typedElement) {
     const options = {
-      strings: ['Realise your dreams', 'Lauch your ventures','Invest in your future'],
+      strings: ['Realise your dreams', 'Launch your ventures','Invest in your future'],
       typeSpeed: 150,
       startDelay: 500,
       loop: true
