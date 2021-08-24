@@ -50,5 +50,4 @@ document.addEventListener('turbolinks:load', () => {
   initTyped();
   initSweetalert();
   barRating();
-  initChatroomCable();
 });
