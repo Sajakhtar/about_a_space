@@ -1,8 +1,4 @@
 module ApplicationCable
-  class Channel < ActionCable::Channel
-    def subscribed
-    chatroom = Chatroom.find(params[:id])
-    stream_for chatroom
-    end
+  class Channel < ActionCable::Channel::Base
   end
 end
