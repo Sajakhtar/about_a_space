@@ -1,5 +1,3 @@
-export { initChatroomCable };
-
 import consumer from "./consumer";
 
 document.addEventListener('turbolinks:load', () => {
