@@ -21,7 +21,7 @@ end
 #     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name])
 #   end
 
-#   private
+#   private ok
 
 #   def skip_pundit?
 #     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
