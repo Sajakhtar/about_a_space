@@ -31,7 +31,10 @@ import { initAos } from 'components/init_aos';
 import { initTyped } from 'components/init_typed';
 import { initSweetalert } from 'components/init_sweetalert';
 import { barRating } from 'components/init_bar_rating';
-import 'jquery-bar-rating/dist/themes/css-stars.css'
+import 'jquery-bar-rating/dist/themes/css-stars.css';
+import { initChatroomCable } from 'channels/chatroom_channel';
+
+
 
 // import { initUpdateNavbarOnScroll } from '../components/navbar';
 
@@ -49,4 +52,5 @@ document.addEventListener('turbolinks:load', () => {
   initTyped();
   initSweetalert();
   barRating();
+  initChatroomCable();
 });
