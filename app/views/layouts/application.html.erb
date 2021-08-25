@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>UnicornCube</title>
-    <link rel = "icon" href =
-"https://image.flaticon.com/icons/png/512/1277/1277662.png"
-        type = "image/x-icon">
-
+    <title>AboutASpace</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+    <%= stylesheet_pack_tag 'application' %>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bar-rating/1.2.2/themes/fontawesome-stars.min.css" rel="stylesheet"/>
 
@@ -25,11 +23,5 @@
     <%= yield %>
 
     <%= render 'shared/footer' %>
-
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
-    <%= stylesheet_pack_tag 'application' %>
-
   </body>
 </html>
-
-</body>

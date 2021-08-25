@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
     @review.space = @space
     @booking = Booking.new
 
-    # authorize @review
+    authorize @review
 
     if @review.save
       redirect_to space_path(@space, anchor: "review-#{@review.id}"), notice: 'Review was successfully created.'

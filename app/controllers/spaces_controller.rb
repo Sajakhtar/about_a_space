@@ -34,7 +34,7 @@ class SpacesController < ApplicationController
   end
 
   def show
-    # authorize @space
+    authorize @space
 
     @has_bookings = !@space.bookings.empty?
     if @has_bookings
@@ -56,40 +56,40 @@ class SpacesController < ApplicationController
 
   def new
     @space = Space.new
-    # authorize @space
+    authorize @space
   end
 
   def create
     @space = Space.new(space_params)
     @space.user = current_user
 
-    # authorize @space
+    authorize @space
     if @space.save
-      redirect_to @space, notice: 'Your New Venture was successfully created.'
+      redirect_to @space, notice: 'Space was successfully created.'
     else
       render :new
     end
   end
 
   def edit
-    # authorize @space
+    authorize @space
   end
 
   def update
-    # authorize @space
+    authorize @space
 
     if @space.update(space_params)
-      redirect_to @space, notice: 'Your New Venture was successfully updated.'
+      redirect_to @space, notice: 'Space was successfully updated.'
     else
       render :edit
     end
   end
 
   def destroy
-    # authorize @space
+    authorize @space
 
     @space.destroy
-    redirect_to my_account_path, notice: 'Your New Venture was successfully deleted.'
+    redirect_to my_account_path, notice: 'Space was successfully destroyed.'
   end
 
   private
