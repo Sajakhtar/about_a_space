@@ -20,7 +20,7 @@ ActiveStorage.start()
 
 // External imports
 import "bootstrap";
-import "flatpickr/dist/flatpickr.css";
+import "flatpickr/dist/flatpickr.css"
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -31,9 +31,7 @@ import { initAos } from 'components/init_aos';
 import { initTyped } from 'components/init_typed';
 import { initSweetalert } from 'components/init_sweetalert';
 import { barRating } from 'components/init_bar_rating';
-import 'jquery-bar-rating/dist/themes/css-stars.css';
-import { initChatroomCable } from 'channels/chatroom_channel';
-
+import 'jquery-bar-rating/dist/themes/css-stars.css'
 
 // import { initUpdateNavbarOnScroll } from '../components/navbar';
 
@@ -51,5 +49,4 @@ document.addEventListener('turbolinks:load', () => {
   initTyped();
   initSweetalert();
   barRating();
-  initChatroomCable();
 });

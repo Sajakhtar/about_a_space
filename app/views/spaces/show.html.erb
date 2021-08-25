@@ -68,16 +68,16 @@
         </li>
         <li class="list-unstyled">
           <h5>
-            USD
+            AED
             <%= @space.price.to_i %>
-            per round
+            per day
           </h5>
         </li>
       </ul>
     </div>
     <div class="col-sm-12 col-md-4">
       <div class="p-4 bg-white shadow-sm" data-aos="fade-in" data-aos-duration="2000" data-aos-easing="ease-in-out">
-        <h4>Fund this venture</h4>
+        <h4>Book this space</h4>
         <% if @has_bookings %>
           <div id="booking-dates" data-unavailable="<%= @unavailable_dates.to_json %>">
             <%= render 'bookings/form' %>

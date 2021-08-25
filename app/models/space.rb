@@ -8,7 +8,7 @@ class Space < ApplicationRecord
   has_many_attached :photos
 
 
-  SPACES = ['Launch', 'Fund', 'Invest'].freeze
+  SPACES = ['Office', 'Conference Room', 'Hall'].freeze
   validates :space, presence: true, inclusion: { in: SPACES }
   validates :title, presence: true
   validates :description, presence: true, length: { minimum: 10 }
