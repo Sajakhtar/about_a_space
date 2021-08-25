@@ -4,7 +4,7 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
-    authorize @booking
+    # authorize @booking
   end
 
   def create
@@ -29,10 +29,10 @@ class BookingsController < ApplicationController
 
     @review = Review.new
 
-    authorize @booking
+    # authorize @booking
 
     if @booking.save
-      redirect_to @booking, notice: 'Booking was successfully created.'
+      redirect_to @booking, notice: 'Funding proposal was successfully created.'
     else
       render 'spaces/show'
     end
@@ -42,12 +42,12 @@ class BookingsController < ApplicationController
 
     @booking = Booking.find(params[:id])
 
-    authorize @booking
+    # authorize @booking
 
     @booking.destroy
 
 
-    redirect_to my_account_path, notice: 'Booking was successfully cancelled.'
+    redirect_to my_account_path, notice: 'Funding proposal was successfully cancelled.'
   end
 
   private

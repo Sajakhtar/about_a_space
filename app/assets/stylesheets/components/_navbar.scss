@@ -1,9 +1,9 @@
 
 .navbar-aboutaspace {
   //  background-color: transparent;
-  background-color: #4472CA;
-  transition: 0.5s background-color ease;
+  background-color: #eaedf3;
   justify-content: space-between;
+  transition: color .33s ease,background-color .33s ease;
 }
 
 .navbar-aboutaspace-white {
@@ -19,6 +19,6 @@
 }
 
 
-.nav-filled {
-  color: #4472CA !important;
-}
+// .nav-filled {
+//   color: #4472CA !important;
+// }

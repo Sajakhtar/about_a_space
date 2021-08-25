@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create]
   end
 
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
+
   resources :bookings, only: [:show, :destroy]
 
   get 'my_account', to: 'dashboard#my_account'
