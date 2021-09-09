@@ -37,22 +37,22 @@ ___
 ### Desktop
 
 <div align="center">
-  <img src="screenshots/home.png" alt="homepage" width="100"/>
-  <img src="screenshots/results.png" alt="results" width="100"/>
-  <img src="screenshots/space.png" alt="space" width="100"/>
-  <img src="screenshots/booking.png" alt="booking" width="100"/>
-  <img src="screenshots/dashboard.png" alt="dashboard" width="100"/>
+  <img src="screenshots/home.png" alt="homepage" width="200"/>
+  <img src="screenshots/results.png" alt="results" width="200"/>
+  <img src="screenshots/space.png" alt="space" width="200"/>
+  <img src="screenshots/booking.png" alt="booking" width="200"/>
+  <img src="screenshots/dashboard.png" alt="dashboard" width="200"/>
 </div>
 
 
 ### Mobile
 
 <div align="center">
-  <img src="screenshots/mobile_home.png" alt="homepage" height="100"/>
-  <img src="screenshots/mobile_results.png" alt="results" height="100"/>
-  <img src="screenshots/mobile_space.png" alt="space" height="100"/>
-  <img src="screenshots/mobile_booking.png" alt="booking" height="100"/>
-  <img src="screenshots/mobile_dashboard.png" alt="dashboard" height="100"/>
+  <img src="screenshots/mobile_home.png" alt="homepage" height="200"/>
+  <img src="screenshots/mobile_results.png" alt="results" height="200"/>
+  <img src="screenshots/mobile_space.png" alt="space" height="200"/>
+  <img src="screenshots/mobile_booking.png" alt="booking" height="200"/>
+  <img src="screenshots/mobile_dashboard.png" alt="dashboard" height="200"/>
 </div>
 
 ___
